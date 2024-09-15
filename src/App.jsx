@@ -1,15 +1,13 @@
-import { useState } from 'react'
 import Button from '@mui/material/Button';
-
-import './App.css'
+import { Typography } from '@mui/material';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
     <div>Hao nguyen</div>
       <Button variant="contained">Hello world</Button>
+      <Typography variant="h1" color='text.secondary'>Test 1</Typography>
     </>
   )
 }
