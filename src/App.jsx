@@ -1,7 +1,5 @@
 import React from 'react';
 
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -16,6 +14,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import {
   useColorScheme,
 } from '@mui/material/styles';
+import { Container } from '@mui/material';
 
 
 export function ModeSelect() {
@@ -58,29 +57,39 @@ export function ModeSelect() {
     </FormControl>
   );
 }
-function ModeToggle() {
-  const { mode, setMode } = useColorScheme();
-
-  return (
-    <Button
-      onClick={() => {
-        setMode(mode === 'light' ? 'dark' : 'light');
-      }}
-    >
-      {mode === 'light' ? 'Turn dark' : 'Turn light'}
-    </Button>
-  );
-}
 
 function App() {
 
   return (
-    <>
-      <ModeSelect />
-      <div>Hao nguyen</div>
-      <Button variant="contained">Hello world</Button>
-      <Typography variant="h1" color='text.secondary'>Test 1</Typography>
-    </>
+    <Container disableGutters maxWidth={false} sx={{ height: '100vh' }}>
+      <Box sx={{
+        backgroundColor: 'primary.light',
+        width: '100%',
+        height: (theme) => theme.trello.appBarHieght,
+        display: 'flex',
+        alignItems: 'center',
+      }}>
+        <ModeSelect />
+      </Box>
+      <Box sx={{
+         backgroundColor: 'primary.dark',
+         width: '100%',
+         height: (theme) => theme.trello.boardBarHeight,
+         display: 'flex',
+         alignItems: 'center',
+      }}>
+        Board bar
+      </Box>
+      <Box sx={{
+        backgroundColor: 'primary.main',
+        width: '100%',
+        height: (theme) =>  `calc(100vh - ${theme.trello.appBarHieght} - ${theme.trello.boardBarHeight})`,
+        display: 'flex',
+        alignItems: 'center',
+      }}>
+        Board content
+      </Box>
+    </Container>
   )
 }
 
